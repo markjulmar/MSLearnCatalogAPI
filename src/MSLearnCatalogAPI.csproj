@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageId>Julmar.MSLearnCatalogAPI</PackageId>
+    <PackageVersion>1.0</PackageVersion>
+    <Authors>Mark Smith</Authors>
+    <Copyright>(C) 2019-2020 julmar.com</Copyright>
+    <Owners>julmar.com</Owners>
+    <PackageProjectUrl>https://github.com/markjulmar/MSLearnCatalogAPI</PackageProjectUrl>
+    <Summary>Wrapper over the Microsoft Learn Catalog API</Summary>
+    <Title>MS Learn Catalog API</Title>
+    <Description>A .NET wrapper over the Microsoft Learn Catalog API</Description>
+    <PackageTags>dotnet mslearn api</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReleaseNotes>1.0 Initial release</PackageReleaseNotes>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+</Project>
