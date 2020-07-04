@@ -1,5 +1,7 @@
 ## MS Learn Catalog API
 
+![Build and Publish MSLearn Catalog API library](https://github.com/markjulmar/MSLearnCatalogAPI/workflows/Build%20and%20Publish%20MSLearn%20Catalog%20API%20library/badge.svg)
+
 This library wraps the [MS Learn Catalog API](https://docs.microsoft.com/en-us/learn/support/catalog-api). It provides a simple .NET wrapper to retrieve the published modules, paths, products, levels, and roles from the live system.
 
 > **Note**: the returned data is the public metadata exposed by the catalog service. Internal data such as `author`, `ms.author` and `azureSandbox` is not available through this API.
