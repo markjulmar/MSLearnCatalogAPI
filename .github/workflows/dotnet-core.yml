@@ -1,4 +1,4 @@
-name: .NET Core
+name: Build and Publish MSLearn Catalog API library
 
 on:
   push:
@@ -8,9 +8,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
@@ -18,8 +16,17 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Install dependencies
+      working-directory: ./src
       run: dotnet restore
     - name: Build
+      working-directory: ./src
       run: dotnet build --configuration Release --no-restore
     - name: Test
+      working-directory: ./src
       run: dotnet test --no-restore --verbosity normal
+    - name: Pack
+      working-directory: ./src
+      run: dotnet pack MSLearnCatalogAPI.csproj --output nuget-packages --configuration Release
+    - name: Push to NuGet
+      working-directory: ./src
+      run: dotnet nuget push nuget-packages/*.nupkg --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
