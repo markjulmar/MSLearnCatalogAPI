@@ -11,13 +11,22 @@ namespace MSLearnCatalogAPI
     /// </summary>
     public static class CatalogApi
     {
-        const string Url = "https://docs.microsoft.com/api/learn/catalog/?locale={0}";
+        const string Url = "https://docs.microsoft.com/api/learn/catalog";
+        const string Locale = "?locale={0}";
 
-        public static async Task<LearnCatalog> GetCatalog(string locale = "en-us")
+        public static Task<LearnCatalog> GetCatalog()
         {
+            return GetCatalog(null);
+        }
+
+        public static async Task<LearnCatalog> GetCatalog(string locale)
+        {
+            string endpoint = Url;
+            if (!string.IsNullOrWhiteSpace(locale))
+                endpoint += string.Format(Locale, WebUtility.HtmlEncode(locale));
+
             using var client = new HttpClient();
-            string results = await client.GetStringAsync(string.Format(Url, WebUtility.HtmlEncode(locale)))
-                                         .ConfigureAwait(false);
+            string results = await client.GetStringAsync(endpoint).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<LearnCatalog>(results,
                 new JsonSerializerSettings

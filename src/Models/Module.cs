@@ -7,6 +7,8 @@ namespace MSLearnCatalogAPI
     [DebuggerDisplay("{Title} - [{Uid}]")]
     public class Module : SharedModel
     {
+        public string FirstUnitUrl { get; set; }
+
         [JsonProperty("number_of_children")]
         public int NumberOfUnits { get; set; }
 

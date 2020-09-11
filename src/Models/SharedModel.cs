@@ -14,6 +14,8 @@ namespace MSLearnCatalogAPI
         public string Title { get; set; }
         [JsonProperty("duration_in_minutes")]
         public int Duration { get; set; }
+        public Rating Rating { get; set; }
+        public double Popularity { get; set; }
         [JsonProperty("icon_url")]
         public string IconUrl { get; set; }
         public string Locale { get; set; }

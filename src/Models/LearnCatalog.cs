@@ -9,5 +9,7 @@ namespace MSLearnCatalogAPI
         public List<Level> Levels { get; set; }
         public List<Role> Roles { get; set; }
         public List<Product> Products { get; set; }
+
+        internal LearnCatalog() { }
     }
 }
