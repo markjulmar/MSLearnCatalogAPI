@@ -2,7 +2,7 @@ name: Build and Publish MSLearn Catalog API library
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
