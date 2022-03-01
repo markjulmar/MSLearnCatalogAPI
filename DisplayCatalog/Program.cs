@@ -10,7 +10,6 @@ namespace DisplayCatalog
         static async Task Main(string[] args)
         {
             var catalog = await CatalogApi.GetCatalog();
-
             Console.WriteLine($"Loaded {catalog.Modules.Count} Modules, {catalog.LearningPaths.Count} Learning Paths.");
 
             Console.WriteLine("Average module rating: " +

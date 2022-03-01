@@ -1,26 +1,99 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace MSLearnCatalogAPI
+namespace MSLearnCatalogAPI;
+
+/// <summary>
+/// Shared data between Learning Paths and Modules.
+/// </summary>
+public abstract class SharedModel
 {
-    public abstract class SharedModel
+    /// <summary>
+    /// Summary of the module or path.
+    /// </summary>
+    public string Summary { get; set; }
+
+    /// <summary>
+    /// Levels this module or path are tied to.
+    /// </summary>
+    public List<string> Levels { get; set; }
+
+    /// <summary>
+    /// Roles this module or path are relevant to.
+    /// </summary>
+    public List<string> Roles { get; set; }
+
+    /// <summary>
+    /// Products this module or path are relevant to.
+    /// </summary>
+    public List<string> Products { get; set; }
+
+    /// <summary>
+    /// Unique identifier for the module or path.
+    /// </summary>
+    public string Uid { get; set; }
+
+    /// <summary>
+    /// Title of the module or path.
+    /// </summary>
+    public string Title { get; set; }
+
+    /// <summary>
+    /// Expected duration in minutes of this module or path.
+    /// </summary>
+    [JsonProperty("duration_in_minutes")]
+    public int Duration { get; set; }
+
+    /// <summary>
+    /// Star rating for this module or path.
+    /// </summary>
+    public Rating Rating { get; set; }
+
+    /// <summary>
+    /// Popularity of this module or path.
+    /// </summary>
+    public double Popularity { get; set; }
+
+    /// <summary>
+    /// Icon URL for this module or path.
+    /// </summary>
+    [JsonProperty("icon_url")]
+    public string IconUrl { get; set; }
+
+    /// <summary>
+    /// Url for a social badge/image for this module or path.
+    /// </summary>
+    [JsonProperty("social_image_url")]
+    public string SocialImageUrl { get; set; }
+
+    /// <summary>
+    /// Locale language for this module or path.
+    /// </summary>
+    public string Locale { get; set; }
+
+    /// <summary>
+    /// Last modified date for this module or path.
+    /// </summary>
+    [JsonProperty("last_modified")]
+    public DateTime LastModified { get; set; }
+
+    /// <summary>
+    /// URL for this module or path. This includes the
+    /// locale and tracking query string information.
+    /// </summary>
+    [JsonProperty("url")]
+    public string TrackedUrl { get; set; }
+
+    /// <summary>
+    /// Returns the base URL for this module or path.
+    /// This is the URL with no tracking data or locale.
+    /// </summary>
+    public string Url
     {
-        public string Summary { get; set; }
-        public List<string> Levels { get; set; }
-        public List<string> Roles { get; set; }
-        public List<string> Products { get; set; }
-        public string Uid { get; set; }
-        public string Title { get; set; }
-        [JsonProperty("duration_in_minutes")]
-        public int Duration { get; set; }
-        public Rating Rating { get; set; }
-        public double Popularity { get; set; }
-        [JsonProperty("icon_url")]
-        public string IconUrl { get; set; }
-        public string Locale { get; set; }
-        [JsonProperty("last_modified")]
-        public DateTime LastModified { get; set; }
-        public string Url { get; set; }
+        get
+        {
+            var uri = new Uri(TrackedUrl);
+            var parts = uri.GetLeftPart(UriPartial.Path).Split('/');
+            return $"{uri.Scheme}://{uri.Host}/" + string.Join('/', parts.Skip(4));
+        }
     }
 }

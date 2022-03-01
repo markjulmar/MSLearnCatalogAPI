@@ -1,24 +1,27 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Newtonsoft.Json;
 
-namespace MSLearnCatalogAPI
+namespace MSLearnCatalogAPI;
+
+/// <summary>
+/// This represents a single module in Microsoft Learn
+/// </summary>
+[DebuggerDisplay("{Title} - [{Uid}]")]
+public class Module : SharedModel
 {
-    [DebuggerDisplay("{Title} - [{Uid}]")]
-    public class Module : SharedModel
-    {
-        public string FirstUnitUrl { get; set; }
+    /// <summary>
+    /// First URL of the initial unit for the module.
+    /// </summary>
+    public string FirstUnitUrl { get; set; }
 
-        [JsonProperty("number_of_children")]
-        public int NumberOfUnits { get; set; }
+    /// <summary>
+    /// Number of units contained in this module.
+    /// </summary>
+    [JsonProperty("number_of_children")]
+    public int NumberOfUnits { get; set; }
 
-        public string BaseUrl()
-        {
-            var uri = new Uri(Url);
-            var rs = uri.Scheme + "://" + uri.Authority + "/";
-            for (int i = 2; i < uri.Segments.Length; i++)
-                rs += uri.Segments[i];
-            return rs;
-        }
-    }
+    /// <summary>
+    /// List of unit UIDs
+    /// </summary>
+    public List<string> Units { get; set; }
 }

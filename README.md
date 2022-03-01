@@ -4,9 +4,7 @@
 
 This library wraps the [MS Learn Catalog API](https://docs.microsoft.com/en-us/learn/support/catalog-api). It provides a simple .NET wrapper to retrieve the published modules, paths, products, levels, and roles from the live system.
 
-> **Note**: the returned data is the public metadata exposed by the catalog service. Internal data such as `author`, `ms.author` and `azureSandbox` is not available through this API.
-
-> **Note**+: the API only returns _visible_ modules. Any module or path marked with the `hidden` metadata value will not be returned by this API.
+> **Note**+: the API only returns public modules that the browse experience on Microsoft Learn shows.
 
 ### Usage
 
@@ -49,10 +47,12 @@ public class Module
     public string Title { get; set; }
     public int Duration { get; set; }
     public string IconUrl { get; set; }
+    public string SocialImageUrl { get; set; }
     public string Locale { get; set; }
     public DateTime LastModified { get; set; }
     public string Url { get; set; }
     public int NumberOfUnits { get; set; }
+    public List<string> Units { get; set; }
 }
 
 public class LearningPath : SharedModel
@@ -65,6 +65,7 @@ public class LearningPath : SharedModel
     public string Title { get; set; }
     public int Duration { get; set; }
     public string IconUrl { get; set; }
+    public string SocialImageUrl { get; set; }
     public string Locale { get; set; }
     public DateTime LastModified { get; set; }
     public string Url { get; set; }

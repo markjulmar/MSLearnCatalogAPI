@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿namespace MSLearnCatalogAPI;
 
-namespace MSLearnCatalogAPI
+/// <summary>
+/// Tree of products available in Microsoft Learn
+/// </summary>
+public class Product : TaxonomyIdName
 {
-    public class Product : TaxonomyIdName
-    {
-        public List<TaxonomyIdName> Children { get; set; }
-    }
+    /// <summary>
+    /// Child products related to this product.
+    /// </summary>
+    public List<TaxonomyIdName> Children { get; set; }
 }
