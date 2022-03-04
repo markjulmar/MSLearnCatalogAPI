@@ -16,14 +16,14 @@ public static class CatalogApi
     /// Returns the Learn catalog using the locale of the HTTP request.
     /// </summary>
     /// <returns>Learn Catalog of modules, paths, and relationships</returns>
-    public static Task<LearnCatalog> GetCatalog() => GetCatalog(null);
+    public static Task<LearnCatalog> GetCatalogAsync() => GetCatalogAsync(null);
 
     /// <summary>
     /// Returns the Learn catalog for the specified locale.
     /// </summary>
     /// <param name="locale">Language locale (en-us)</param>
     /// <returns>Learn Catalog of modules, paths, and relationships</returns>
-    public static async Task<LearnCatalog> GetCatalog(string locale)
+    public static async Task<LearnCatalog> GetCatalogAsync(string locale)
     {
         string endpoint = Url;
         if (!string.IsNullOrWhiteSpace(locale))
@@ -40,7 +40,7 @@ public static class CatalogApi
         if (catalog != null)
         {
             // Fill in path ratings
-            foreach (var path in catalog.LearningPaths.Where(p => p.Rating.Count == 0))
+            foreach (var path in catalog.LearningPaths.Where(p => p.Rating?.Count == 0))
             {
                 var modules = catalog.ModulesForPath(path).ToList();
                 if (modules.Any(m => m.Rating.Count > 0))
