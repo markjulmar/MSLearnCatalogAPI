@@ -3,7 +3,7 @@
     /// <summary>
     /// Star ratings
     /// </summary>
-    public class Rating
+    public sealed class Rating
     {
         /// <summary>
         /// Number of ratings recorded

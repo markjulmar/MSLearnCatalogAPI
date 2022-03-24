@@ -3,6 +3,6 @@
 /// <summary>
 /// Roles available in Microsoft Learn
 /// </summary>
-public class Role : TaxonomyIdName
+public sealed class Role : TaxonomyIdName
 {
 }

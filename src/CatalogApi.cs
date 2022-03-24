@@ -16,7 +16,7 @@ public static class CatalogApi
     /// Returns the Learn catalog using the locale of the HTTP request.
     /// </summary>
     /// <returns>Learn Catalog of modules, paths, and relationships</returns>
-    public static Task<LearnCatalog> GetCatalogAsync() => GetCatalogAsync(null);
+    public static Task<LearnCatalog> GetCatalogAsync() => GetCatalogAsync(string.Empty);
 
     /// <summary>
     /// Returns the Learn catalog for the specified locale.
@@ -37,17 +37,18 @@ public static class CatalogApi
                 DateTimeZoneHandling = DateTimeZoneHandling.Utc
             });
 
-        if (catalog != null)
+        if (catalog == null)
+            throw new InvalidOperationException(
+                "Unable to parse results from Learn Catalog - possibly outdated schema?");
+        
+        // Fill in path ratings
+        foreach (var path in catalog.LearningPaths.Where(p => p.Rating?.Count == 0))
         {
-            // Fill in path ratings
-            foreach (var path in catalog.LearningPaths.Where(p => p.Rating?.Count == 0))
+            var modules = catalog.ModulesForPath(path).ToList();
+            if (modules.Any(m => m.Rating.Count > 0))
             {
-                var modules = catalog.ModulesForPath(path).ToList();
-                if (modules.Any(m => m.Rating.Count > 0))
-                {
-                    path.Rating.Count = modules.Sum(m => m.Rating.Count);
-                    path.Rating.Average = modules.Average(m => m.Rating.Average);
-                }
+                path.Rating.Count = modules.Sum(m => m.Rating.Count);
+                path.Rating.Average = modules.Average(m => m.Rating.Average);
             }
         }
 

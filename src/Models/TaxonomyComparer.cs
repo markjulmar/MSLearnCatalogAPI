@@ -3,7 +3,7 @@
 /// <summary>
 /// Simple comparer for the Taxonomy id/name pairs.
 /// </summary>
-public class TaxonomyComparer : IEqualityComparer<TaxonomyIdName>
+public sealed class TaxonomyComparer : IEqualityComparer<TaxonomyIdName>
 {
     /// <summary>
     /// Determines whether the specified objects are equal.
@@ -11,7 +11,7 @@ public class TaxonomyComparer : IEqualityComparer<TaxonomyIdName>
     /// <param name="x">The first TaxonomyIdName to compare.</param>
     /// <param name="y">The second TaxonomyIdName to compare.</param>
     /// <returns>True if the specified objects are equal; otherwise, False.</returns>
-    public bool Equals(TaxonomyIdName x, TaxonomyIdName y) 
+    public bool Equals(TaxonomyIdName? x, TaxonomyIdName? y) 
         => x == null && y == null || x != null && y != null && x.Id.Equals(y.Id) && x.Name.Equals(y.Name);
 
     /// <summary>

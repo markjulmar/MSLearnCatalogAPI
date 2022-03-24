@@ -7,12 +7,12 @@ namespace MSLearnCatalogAPI;
 /// This represents a single module in Microsoft Learn
 /// </summary>
 [DebuggerDisplay("{Title} - [{Uid}]")]
-public class Module : SharedModel
+public sealed class Module : SharedModel
 {
     /// <summary>
     /// First URL of the initial unit for the module.
     /// </summary>
-    public string FirstUnitUrl { get; set; }
+    public string FirstUnitUrl { get; set; } = string.Empty;
 
     /// <summary>
     /// Number of units contained in this module.
@@ -23,5 +23,5 @@ public class Module : SharedModel
     /// <summary>
     /// List of unit UIDs
     /// </summary>
-    public List<string> Units { get; set; }
+    public List<string> Units { get; set; } = new();
 }
