@@ -14,7 +14,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>2.0 refresh of API</PackageReleaseNotes>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>2.2.0.0</Version>
+		<Version>2.2.1.0</Version>
 		<Company>julmar.com</Company>
 		<RepositoryUrl>https://github.com/markjulmar/MSLearnRepos</RepositoryUrl>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
