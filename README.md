@@ -13,7 +13,7 @@ A single static method returns all five elements together:
 ```csharp
 using MSLearnCatalogAPI;
 
-LearnCatalog learnCatalog = await CatalogApi.GetCatalog(null);
+LearnCatalog learnCatalog = await CatalogApi.GetCatalogAsync(null);
 
 foreach (var module in learnCatalog.Modules.Where(m => m.Title.StartsWith("Intro"))
 {
