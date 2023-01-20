@@ -24,4 +24,10 @@ public sealed class Module : SharedModel
     /// List of unit UIDs
     /// </summary>
     public List<string> Units { get; set; } = new();
+
+    /// <summary>
+    /// Returns a string that represents the current object.
+    /// </summary>
+    /// <returns>A string that represents the current object.</returns>
+    public override string ToString() => Title;
 }

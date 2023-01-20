@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSLearnCatalogAPI", "src\MS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DisplayCatalog", "DisplayCatalog\DisplayCatalog.csproj", "{854D2DEE-9092-4C7C-BE7C-AB1782009FB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogApiTests", "tests\CatalogApiTests\CatalogApiTests.csproj", "{741C7366-2622-447C-B054-EDC3CC32D396}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{854D2DEE-9092-4C7C-BE7C-AB1782009FB6}.Release|x64.Build.0 = Release|Any CPU
 		{854D2DEE-9092-4C7C-BE7C-AB1782009FB6}.Release|x86.ActiveCfg = Release|Any CPU
 		{854D2DEE-9092-4C7C-BE7C-AB1782009FB6}.Release|x86.Build.0 = Release|Any CPU
+		{741C7366-2622-447C-B054-EDC3CC32D396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{741C7366-2622-447C-B054-EDC3CC32D396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{741C7366-2622-447C-B054-EDC3CC32D396}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{741C7366-2622-447C-B054-EDC3CC32D396}.Debug|x64.Build.0 = Debug|Any CPU
+		{741C7366-2622-447C-B054-EDC3CC32D396}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{741C7366-2622-447C-B054-EDC3CC32D396}.Debug|x86.Build.0 = Debug|Any CPU
+		{741C7366-2622-447C-B054-EDC3CC32D396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{741C7366-2622-447C-B054-EDC3CC32D396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{741C7366-2622-447C-B054-EDC3CC32D396}.Release|x64.ActiveCfg = Release|Any CPU
+		{741C7366-2622-447C-B054-EDC3CC32D396}.Release|x64.Build.0 = Release|Any CPU
+		{741C7366-2622-447C-B054-EDC3CC32D396}.Release|x86.ActiveCfg = Release|Any CPU
+		{741C7366-2622-447C-B054-EDC3CC32D396}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

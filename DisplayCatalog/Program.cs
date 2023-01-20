@@ -29,7 +29,7 @@ namespace DisplayCatalog
             Console.WriteLine();
             Console.WriteLine("Top rated modules");
             foreach (var module in catalog.Modules.Where(m => m.Rating?.Count > 0).OrderByDescending(m => m.Rating.Average).Take(10))
-                Console.WriteLine($"{module.Title} - {module.Rating.Average}");
+                Console.WriteLine($"{module.Title} - {module.Rating?.Average}");
 
             Console.WriteLine();
             Console.WriteLine("Latest published paths:");
@@ -44,7 +44,7 @@ namespace DisplayCatalog
             Console.WriteLine();
             Console.WriteLine("Top rated paths");
             foreach (var path in catalog.LearningPaths.Where(m => m.Rating?.Count > 0).OrderByDescending(m => m.Rating.Average).Take(10))
-                Console.WriteLine($"{path.Title} - {path.Rating.Average}");
+                Console.WriteLine($"{path.Title} - {path.Rating?.Average}");
         }
     }
 }

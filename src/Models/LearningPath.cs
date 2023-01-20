@@ -10,12 +10,14 @@ namespace MSLearnCatalogAPI;
 public sealed class LearningPath : SharedModel
 {
     /// <summary>
-    /// URL of the first module in this learning path.
+    /// A fully qualified URL to the first module of the learning
+    /// path in Microsoft Learn in the requested locale.
     /// </summary>
     public string FirstModuleUrl { get; set; } = string.Empty;
 
     /// <summary>
-    /// List of module UIDs associated with this path.
+    ///A list of the associated module UIDs. Details about the
+    /// modules can be referenced in the module records.
     /// </summary>
     public List<string> Modules { get; set; } = new();
 
@@ -24,4 +26,10 @@ public sealed class LearningPath : SharedModel
     /// </summary>
     [JsonProperty("number_of_children")]
     public int NumberOfModules { get; set; }
+
+    /// <summary>
+    /// Returns a string that represents the current object.
+    /// </summary>
+    /// <returns>A string that represents the current object.</returns>
+    public override string ToString() => Title;
 }

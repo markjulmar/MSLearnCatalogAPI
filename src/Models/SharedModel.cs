@@ -8,37 +8,47 @@ namespace MSLearnCatalogAPI;
 public abstract class SharedModel
 {
     /// <summary>
-    /// Summary of the module or path.
+    /// A string that provides a short description of the module or learning path.
+    /// The value is expressed as an HTML paragraph tag with the inner text being the summary.
     /// </summary>
     public string Summary { get; set; } = string.Empty;
 
     /// <summary>
-    /// Levels this module or path are tied to.
+    /// A list of the levels associated with this module or path, which indicate
+    /// how much experience in the role is necessary to understand all aspects
+    /// of this module. Details about the units can be referenced in the level records.
     /// </summary>
     public List<string> Levels { get; set; } = new();
 
     /// <summary>
-    /// Roles this module or path are relevant to.
+    /// A list of the job roles that this module or learning path is relevant to.
     /// </summary>
     public List<string> Roles { get; set; } = new();
 
     /// <summary>
-    /// Products this module or path are relevant to.
+    /// A list of relevant products this module or learning path covers.
+    /// Details about the products can be referenced in the product records.
     /// </summary>
     public List<string> Products { get; set; } = new();
 
     /// <summary>
-    /// Unique identifier for the module or path.
+    /// A list of relevant subjects this module or learning path covers.
+    /// </summary>
+    public List<string> Subjects { get; set; } = new();
+
+    /// <summary>
+    /// Unique identifier for the module or path. This value will be unique
+    /// across all of Microsoft Learn.
     /// </summary>
     public string Uid { get; set; } = string.Empty;
 
     /// <summary>
-    /// Title of the module or path.
+    /// Title of the module or path in the requested locale.
     /// </summary>
     public string Title { get; set; } = string.Empty;
 
     /// <summary>
-    /// Expected duration in minutes of this module or path.
+    /// Expected/Average duration in minutes of this module or path.
     /// </summary>
     [JsonProperty("duration_in_minutes")]
     public int Duration { get; set; }
@@ -46,27 +56,31 @@ public abstract class SharedModel
     /// <summary>
     /// Star rating for this module or path.
     /// </summary>
-    public Rating Rating { get; set; } = new();
+    public Rating? Rating { get; set; }
 
     /// <summary>
-    /// Popularity of this module or path.
+    /// A normalized value from 0-1 indicating the popularity of the module or path.
     /// </summary>
     public double Popularity { get; set; }
 
     /// <summary>
-    /// Icon URL for this module or path.
+    /// A fully qualified URL to a 100x100 SVG image that represents
+    /// the achievement image with a transparent background.
     /// </summary>
     [JsonProperty("icon_url")]
     public string IconUrl { get; set; } = string.Empty;
 
     /// <summary>
-    /// Url for a social badge/image for this module or path.
+    /// A fully qualified URL to a PNG image that represents the achievement image
+    /// with a rectangular opaque background, suited for social media or tile experiences.
+    /// If it isn't available, this property will be empty.
     /// </summary>
     [JsonProperty("social_image_url")]
     public string SocialImageUrl { get; set; } = string.Empty;
 
     /// <summary>
-    /// Locale language for this module or path.
+    /// Locale language for this module or path. If the requested locale is not available,
+    /// en-US will be used as a fallback.
     /// </summary>
     public string Locale { get; set; } = string.Empty;
 

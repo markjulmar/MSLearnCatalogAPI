@@ -6,14 +6,34 @@
 public class LearnCatalog
 {
     /// <summary>
-    /// List of available modules.
+    /// List of published Microsoft Learn training modules.
     /// </summary>
     public List<Module> Modules { get; set; } = new();
 
     /// <summary>
-    /// List of available Learning Paths
+    /// List of published Microsoft Learn units in modules
+    /// </summary>
+    public List<ModuleUnit> Units { get; set; } = new();
+
+    /// <summary>
+    /// List of published Microsoft Learn learning paths.
     /// </summary>
     public List<LearningPath> LearningPaths { get; set; } = new();
+
+    /// <summary>
+    /// List of published Microsoft Learn certifications.
+    /// </summary>
+    public List<Certification> Certifications { get; set; } = new();
+
+    /// <summary>
+    /// List of published Microsoft Learn exams.
+    /// </summary>
+    public List<Exam> Exams { get; set; } = new();
+
+    /// <summary>
+    /// List of published Microsoft Learn instructor-led courses.
+    /// </summary>
+    public List<InstructorLedCourse> Courses { get; set; } = new();
 
     /// <summary>
     /// Levels used in modules/paths.
@@ -31,6 +51,11 @@ public class LearnCatalog
     public List<Product> Products { get; set; } = new();
 
     /// <summary>
+    /// Subjects used in modules/paths.
+    /// </summary>
+    public List<Subject> Subjects { get; set; } = new();
+
+    /// <summary>
     /// Returns the modules tied to a specific Learning path.
     /// </summary>
     /// <param name="path">Path to get modules for</param>
@@ -38,11 +63,8 @@ public class LearnCatalog
     public IEnumerable<Module> ModulesForPath(LearningPath path)
     {
         if (path == null) throw new ArgumentNullException(nameof(path));
-        foreach (var uid in path.Modules)
-        {
-            var module = Modules.SingleOrDefault(m2 => m2.Uid == uid);
-            if (module != null) 
-                yield return module;
-        }
+        return path.Modules.Select(uid => Modules.SingleOrDefault(m2 => m2.Uid == uid))
+            .Where(module => module != null)
+            .Cast<Module>();
     }
 }
