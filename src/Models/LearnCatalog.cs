@@ -21,6 +21,11 @@ public class LearnCatalog
     public List<LearningPath> LearningPaths { get; set; } = new();
 
     /// <summary>
+    /// List of applied skills
+    /// </summary>
+    public List<AppliedSkill> AppliedSkills { get; set; } = new();
+
+    /// <summary>
     /// List of published Microsoft Learn certifications.
     /// </summary>
     public List<Certification> Certifications { get; set; } = new();

@@ -3,15 +3,47 @@
 namespace MSLearnCatalogAPI;
 
 /// <summary>
-/// Shared data between Learning Paths and Modules.
+/// The base model shared by all
 /// </summary>
-public abstract class SharedModel
+public abstract class BaseSharedModel
 {
+     /// <summary>
+    /// Unique identifier for the module or path. This value will be unique
+    /// across all of Microsoft Learn.
+    /// </summary>
+    public string Uid { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Title of the module or path in the requested locale.
+    /// </summary>
+    public string Title { get; set; } = string.Empty;
+
     /// <summary>
     /// A string that provides a short description of the module or learning path.
     /// The value is expressed as an HTML paragraph tag with the inner text being the summary.
     /// </summary>
     public string Summary { get; set; } = string.Empty;
+
+    /// <summary>
+    /// URL for this module or path. This includes the
+    /// locale and tracking query string information.
+    /// </summary>
+    [JsonProperty("url")]
+    public string TrackedUrl { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Returns the base URL for this module or path.
+    /// This is the URL with no tracking data or locale.
+    /// </summary>
+    public string Url
+    {
+        get
+        {
+            var uri = new Uri(TrackedUrl);
+            var parts = uri.GetLeftPart(UriPartial.Path).Split('/');
+            return $"{uri.Scheme}://{uri.Host}/" + string.Join('/', parts.Skip(4));
+        }
+    }
 
     /// <summary>
     /// A list of the levels associated with this module or path, which indicate
@@ -37,16 +69,23 @@ public abstract class SharedModel
     public List<string> Subjects { get; set; } = new();
 
     /// <summary>
-    /// Unique identifier for the module or path. This value will be unique
-    /// across all of Microsoft Learn.
+    /// Last modified date for this module or path.
     /// </summary>
-    public string Uid { get; set; } = string.Empty;
+    [JsonProperty("last_modified")]
+    public DateTime LastModified { get; set; }
 
     /// <summary>
-    /// Title of the module or path in the requested locale.
+    /// Locale language for this module or path. If the requested locale is not available,
+    /// en-US will be used as a fallback.
     /// </summary>
-    public string Title { get; set; } = string.Empty;
+    public string Locale { get; set; } = string.Empty;
+}
 
+/// <summary>
+/// Shared data between Learning Paths and Modules.
+/// </summary>
+public abstract class SharedModel : BaseSharedModel
+{
     /// <summary>
     /// Expected/Average duration in minutes of this module or path.
     /// </summary>
@@ -77,37 +116,4 @@ public abstract class SharedModel
     /// </summary>
     [JsonProperty("social_image_url")]
     public string SocialImageUrl { get; set; } = string.Empty;
-
-    /// <summary>
-    /// Locale language for this module or path. If the requested locale is not available,
-    /// en-US will be used as a fallback.
-    /// </summary>
-    public string Locale { get; set; } = string.Empty;
-
-    /// <summary>
-    /// Last modified date for this module or path.
-    /// </summary>
-    [JsonProperty("last_modified")]
-    public DateTime LastModified { get; set; }
-
-    /// <summary>
-    /// URL for this module or path. This includes the
-    /// locale and tracking query string information.
-    /// </summary>
-    [JsonProperty("url")]
-    public string TrackedUrl { get; set; } = string.Empty;
-
-    /// <summary>
-    /// Returns the base URL for this module or path.
-    /// This is the URL with no tracking data or locale.
-    /// </summary>
-    public string Url
-    {
-        get
-        {
-            var uri = new Uri(TrackedUrl);
-            var parts = uri.GetLeftPart(UriPartial.Path).Split('/');
-            return $"{uri.Scheme}://{uri.Host}/" + string.Join('/', parts.Skip(4));
-        }
-    }
 }

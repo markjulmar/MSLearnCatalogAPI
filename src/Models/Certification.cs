@@ -4,7 +4,9 @@ using System.Diagnostics;
 namespace MSLearnCatalogAPI;
 
 /// <summary>
-/// This represents a certification type available from Microsoft Learn
+/// This represents a certification type available from Microsoft Learn.
+/// Certifications requiring more than one exam will be present in this 
+/// Certifications record referencing the exams array.
 /// </summary>
 [DebuggerDisplay("{Title} - [{Uid}]")]
 public sealed class Certification

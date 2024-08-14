@@ -19,4 +19,9 @@ public sealed class ExamProvider
     /// The URL for the provider's exam.
     /// </summary>
     public string ExamUrl { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Fully qualified URL to the exam registration.
+    /// </summary>
+    public string AbsoluteExamUrl => $"https://learn.microsoft.com{ExamUrl}";
 }

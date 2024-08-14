@@ -57,6 +57,12 @@ public sealed class Exam
     public string? PracticeTestUrl { get; set; }
 
     /// <summary>
+    /// A fully qualified URL to the practice assessment associated with this exam.
+    /// </summary>
+    [JsonProperty("practice_assessment_url")]
+    public string? PracticeAssessmentUrl { get; set; }
+
+    /// <summary>
     /// A list of languages this exam is offered in.
     /// </summary>
     public List<string> Locales { get; set; } = new();

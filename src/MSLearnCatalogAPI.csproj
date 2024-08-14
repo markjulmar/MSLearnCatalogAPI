@@ -4,7 +4,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PackageId>Julmar.MSLearnCatalogAPI</PackageId>
 		<Authors>Mark Smith</Authors>
-		<Copyright>(C) 2019-2023 julmar.com</Copyright>
+		<Copyright>(C) 2019-2024 julmar.com</Copyright>
 		<Owners>julmar.com</Owners>
 		<PackageProjectUrl>https://github.com/markjulmar/MSLearnCatalogAPI</PackageProjectUrl>
 		<Summary>Wrapper over the Microsoft Learn Catalog API</Summary>
@@ -12,9 +12,9 @@
 		<Description>A .NET wrapper over the Microsoft Learn Catalog API</Description>
 		<PackageTags>dotnet mslearn api</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageReleaseNotes>2.3 refresh of API</PackageReleaseNotes>
+		<PackageReleaseNotes>2.4 refresh of API</PackageReleaseNotes>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>2.3.0.0</Version>
+		<Version>2.4.0.0</Version>
 		<Company>julmar.com</Company>
 		<RepositoryUrl>https://github.com/markjulmar/MSLearnRepos</RepositoryUrl>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -31,7 +31,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\README.md">
