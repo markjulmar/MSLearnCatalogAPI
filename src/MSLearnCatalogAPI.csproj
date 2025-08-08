@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>.net60</TargetFramework>
+		<TargetFramework>.net80</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PackageId>Julmar.MSLearnCatalogAPI</PackageId>
 		<Authors>Mark Smith</Authors>
@@ -12,9 +12,9 @@
 		<Description>A .NET wrapper over the Microsoft Learn Catalog API</Description>
 		<PackageTags>dotnet mslearn api</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageReleaseNotes>2.4 refresh of API</PackageReleaseNotes>
+		<PackageReleaseNotes>2.5 update to .NET8</PackageReleaseNotes>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>2.4.0.0</Version>
+		<Version>2.5.0.0</Version>
 		<Company>julmar.com</Company>
 		<RepositoryUrl>https://github.com/markjulmar/MSLearnRepos</RepositoryUrl>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
